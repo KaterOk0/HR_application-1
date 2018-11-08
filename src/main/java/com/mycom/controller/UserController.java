@@ -99,8 +99,16 @@ public class UserController {
 
     @RequestMapping(value = "/UserSortEmail", method = RequestMethod.GET)
     public String userSortEmail(Model model, HttpServletRequest request) {
-        list = jdbcUserDao.findAllSortSurName();
+        list = jdbcUserDao.findAllSortEmail();
         return createViewForm(model);
     }
+
+//    @RequestMapping(value = "/UserSearchName", method = RequestMethod.GET)
+//    public String userSearch(Model model, HttpServletRequest request) {
+//        String type = request.getParameter("type");
+//        list = jdbcUserDao.searchByName();
+//        return createViewForm(model);
+//    }
+
 
 }

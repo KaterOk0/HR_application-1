@@ -105,4 +105,23 @@ public class FeedbackController {
         list = jdbcFeedBackDao.findByState(type);
         return createViewForm(model);
     }
+
+    @RequestMapping(value = "/SortReason", method = RequestMethod.GET)
+    public String sortReason(Model model) {
+        list = jdbcFeedBackDao.sortByReason();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/SortInterviewer", method = RequestMethod.GET)
+    public String sortInterviewer(Model model) {
+        list = jdbcFeedBackDao.sortByInterviewer();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/SortInterview", method = RequestMethod.GET)
+    public String sortInterview(Model model) {
+        list = jdbcFeedBackDao.sortByInterview();
+        return createViewForm(model);
+    }
+
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface VacancyDao {
     String SQL_FIND_ALL_VACANCY = SqlDao.SQL_FIND_ALL + Vacancy.TABLE_NAME;
+    String SQL_SORT_FOR_POSITION = SqlDao.SQL_FIND_ALL + Vacancy.TABLE_NAME +
+            " order by " + Vacancy.POSITION_COLUMN;
     String SQL_SORT_FOR_SALARY_TO = SqlDao.SQL_FIND_ALL + Vacancy.TABLE_NAME +
             " order by " + Vacancy.SALARY_TO_COLUMN;
     String SQL_SORT_FOR_SALARY_FROM = SqlDao.SQL_FIND_ALL + Vacancy.TABLE_NAME +
@@ -28,6 +30,8 @@ public interface VacancyDao {
             " where " + Vacancy.ID_COLUMN + "=?";
 
     List<Vacancy> findAll();
+
+    List<Vacancy> sortForPosition();
 
     List<Vacancy> sortForSalaryTo();
 

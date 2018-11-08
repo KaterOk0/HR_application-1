@@ -1,11 +1,21 @@
 package com.mycom.dao;
 
 import com.mycom.entity.FeedBack;
+import com.mycom.entity.Interview;
+import com.mycom.entity.User;
 
 import java.util.List;
 
 public interface FeedBackDao {
     String SQL_FIND_ALL_FEEDBACK = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME;
+
+    String SQL_SORT_BY_REASON = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME +
+            " order by " + FeedBack.REASON_COLUMN;
+    String SQL_SORT_BY_INTERVIEWER = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME +
+            " order by " + FeedBack.ID_INTERVIEWER_COLUMN;// wrong
+    String SQL_SORT_BY_INTERVIEW = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME +
+            " order by " + FeedBack.ID_INTERVIEW_COLUMN;// wrong
+
     String SQL_FIND_BY_INTERVIEWER = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME +
             " where " + FeedBack.ID_INTERVIEWER_COLUMN + "=?";
     String SQL_FIND_BY_STATE = SqlDao.SQL_FIND_ALL + FeedBack.TABLE_NAME +
@@ -30,6 +40,12 @@ public interface FeedBackDao {
     List<FeedBack> findByState(String feedbackState);
 
     FeedBack findById(long id);
+
+    List<FeedBack> sortByReason();
+
+    List<FeedBack> sortByInterviewer();
+
+    List<FeedBack> sortByInterview();
 
     void insert(FeedBack feedback);
 

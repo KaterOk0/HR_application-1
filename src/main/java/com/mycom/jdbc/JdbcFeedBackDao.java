@@ -4,6 +4,7 @@ import com.mycom.dao.FeedBackDao;
 import com.mycom.entity.FeedBack;
 import com.mycom.entity.Interview;
 import com.mycom.entity.User;
+import com.mycom.entity.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,7 @@ public class JdbcFeedBackDao implements FeedBackDao {
 
     @Autowired
     private JdbcInterviewDao jdbcinterviewdao;
+
     @Autowired
     private JdbcUserDao jdbcuserdao;
 
@@ -43,6 +45,32 @@ public class JdbcFeedBackDao implements FeedBackDao {
         feedback.setInterviewName(interview.getName());
         feedback.setInterviewerName(user.getName() + " " + user.getSurname());
         return feedback;
+    }
+
+
+    private List<FeedBack> getList(String sqlQuery) {
+        List<FeedBack> list = new ArrayList<FeedBack>();
+        Connection connection = null;
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sqlQuery);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                list.add(creator(rs));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 
     @Override
@@ -69,6 +97,21 @@ public class JdbcFeedBackDao implements FeedBackDao {
             }
         }
         return list;
+    }
+
+    @Override
+    public List<FeedBack> sortByReason() {
+        return getList(SQL_SORT_BY_REASON);
+    }
+
+    @Override
+    public List<FeedBack> sortByInterviewer() {
+        return getList(SQL_SORT_BY_INTERVIEW);
+    }
+
+    @Override
+    public List<FeedBack> sortByInterview() {
+        return getList(SQL_SORT_BY_INTERVIEWER);
     }
 
     @Override
@@ -229,4 +272,6 @@ public class JdbcFeedBackDao implements FeedBackDao {
         }
         return feedback;
     }
+
+
 }

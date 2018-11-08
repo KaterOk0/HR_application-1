@@ -10,6 +10,14 @@ public interface InterviewDao {
             " order by " + Interview.FACT_DATE_COLUMN;
     String SQL_SORT_BY_DATE_PLAN = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
             " order by " + Interview.PLAN_DATE_COLUMN;
+    String SQL_SORT_BY_CANDIDATE = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
+            " order by " + Interview.ID_CANDIDATE_COLUMN;
+
+    String SQL_SORT_BY_INTERVIEW_NAME = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
+            " order by " + Interview.NAME_COLUMN;
+    String SQL_SORT_BY_VACANCY = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
+            " order by " + Interview.ID_VACANCY_COLUMN;// эмм... чет не то
+
     String SQL_FIND_BY_CANDIDATE = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
             " where " + Interview.ID_CANDIDATE_COLUMN + "=?";
     String SQL_FIND_BY_ID = SqlDao.SQL_FIND_ALL + Interview.TABLE_NAME +
@@ -31,6 +39,12 @@ public interface InterviewDao {
     List<Interview> sortByDateFact();
 
     List<Interview> sortByDatePlan();
+
+    List<Interview> sortByVacancy();
+
+    List<Interview> sortByInterviewName();
+
+    List<Interview> sortByCandidate();
 
     List<Interview> findByCandidate(long candidateId);
 

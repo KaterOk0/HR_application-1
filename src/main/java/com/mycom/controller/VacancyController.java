@@ -99,6 +99,12 @@ public class VacancyController {
         return createViewForm(model);
     }
 
+    @RequestMapping(value = "/SortPosition", method = RequestMethod.GET)
+    public String sortPosition(Model model) {
+        list = jdbcVacancyDao.sortForPosition();
+        return createViewForm(model);
+    }
+
     @RequestMapping(value = "/SortSalaryTo", method = RequestMethod.GET)
     public String sortSalaryTo(Model model) {
         list = jdbcVacancyDao.sortForSalaryTo();
