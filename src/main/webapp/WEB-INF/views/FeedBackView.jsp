@@ -37,8 +37,8 @@
 			<tr>
 				<td><c:out value="${feedback.reason}"></c:out></td>
 				<td><c:out value="${feedback.feedbackState}"/></td>
-				<td><c:out value="${feedback.interviewername}"/></td>
-				<td><c:out value="${feedback.interviewname}"/></td>
+				<td><c:out value="${feedback.interviewerName}"/></td>
+				<td><c:out value="${feedback.interviewName}"/></td>
 				<td><a href="FeedBackEdit?id=${feedback.id}"><spring:message code="edit"/></a></td>
 			    <td><a href="FeedBackDelete?id=${feedback.id}"><spring:message code="delete"/></a></td>
 			</tr>

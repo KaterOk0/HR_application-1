@@ -41,8 +41,8 @@
 				<td><c:out value="${interview.name}"/></td>
 				<td><c:out value="${interview.factDate}"/></td>
 				<td><c:out value="${interview.planDate}"/></td>
-				<td><c:out value="${interview.vacancyname}"/></td>
-				<td><c:out value="${interview.candidatename}"/></td>
+				<td><c:out value="${interview.vacancyName}"/></td>
+				<td><c:out value="${interview.candidateName}"/></td>
 			    <td><a href="InterviewEdit?id=${interview.id}"><spring:message code="edit"/></a></td>
 			    <td><a href="InterviewDelete?id=${interview.id}"><spring:message code="delete"/></a></td>
 		</c:forEach>

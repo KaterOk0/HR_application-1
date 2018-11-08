@@ -47,10 +47,10 @@
 	<c:forEach var="vacancy" items="${list}">
 		<tr>
 			<td><c:out value="${vacancy.position}"/></td>
-			<td><c:out value="${vacancy.salaryfrom}"/></td>
-			<td><c:out value="${vacancy.salaryto}"/></td>
+			<td><c:out value="${vacancy.salaryFrom}"/></td>
+			<td><c:out value="${vacancy.salaryTo}"/></td>
 			<td><c:out value="${vacancy.experienceYearRequire}"/></td>
-			<td><c:out value="${vacancy.developername}"/></td>
+			<td><c:out value="${vacancy.developerName}"/></td>
 			<td>
 				<c:forEach var="skill" items="${vacancy.skills}">
 					<c:out value="${skill}"/>|

@@ -24,6 +24,9 @@ footer{
     display:flex;
     position: absolute;
 }
+select{
+    margin-left: 60%
+}
 .main-block{
     min-height: calc(100% - 200px);
 }
