@@ -109,6 +109,18 @@ public class CandidateController {
         return createViewForm(model);
     }
 
+    @RequestMapping(value = "/CandidateSortSurName", method = RequestMethod.GET)
+    public String candidateSortSurName(Model model) {
+        list = jdbcCandidateDao.sortSurNameCandidate();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/CandidateSortBirthday", method = RequestMethod.GET)
+    public String candidateSortBirthday(Model model) {
+        list = jdbcCandidateDao.sortBirthdayCandidate();
+        return createViewForm(model);
+    }
+
     @RequestMapping(value = "/CandidateSortSalary", method = RequestMethod.GET)
     public String candidateSortSalary(Model model) {
         list = jdbcCandidateDao.sortSalaryCandidate();

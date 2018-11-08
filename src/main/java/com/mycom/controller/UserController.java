@@ -26,7 +26,6 @@ public class UserController {
     private static List<User> list;
 
     private String createViewForm(Model model) {
-        //List<User> list = jdbcUserDao.findAll();
         model.addAttribute("list", list);
         return "UserView";
     }
@@ -91,5 +90,25 @@ public class UserController {
         list = jdbcUserDao.findAllSortName();
         return createViewForm(model);
     }
+
+    @RequestMapping(value = "/UserSortSurName", method = RequestMethod.GET)
+    public String userSortSurName(Model model, HttpServletRequest request) {
+        list = jdbcUserDao.findAllSortSurName();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/UserSortEmail", method = RequestMethod.GET)
+    public String userSortEmail(Model model, HttpServletRequest request) {
+        list = jdbcUserDao.findAllSortEmail();
+        return createViewForm(model);
+    }
+
+//    @RequestMapping(value = "/UserSearchName", method = RequestMethod.GET)
+//    public String userSearch(Model model, HttpServletRequest request) {
+//        String type = request.getParameter("type");
+//        list = jdbcUserDao.searchByName();
+//        return createViewForm(model);
+//    }
+
 
 }

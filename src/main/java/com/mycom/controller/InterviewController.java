@@ -106,4 +106,22 @@ public class InterviewController {
         return createViewForm(model);
     }
 
+    @RequestMapping(value = "/SortInterviewName", method = RequestMethod.GET)
+    public String sortInterviewName(Model model) {
+        list = jdbcInterviewDao.sortByInterviewName();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/SortVacancy", method = RequestMethod.GET)
+    public String sortVacancy(Model model) {
+        list = jdbcInterviewDao.sortByVacancy();
+        return createViewForm(model);
+    }
+
+    @RequestMapping(value = "/SortCandidate", method = RequestMethod.GET)
+    public String sortCandidate(Model model) {
+        list = jdbcInterviewDao.sortByCandidate();
+        return createViewForm(model);
+    }
+
 }

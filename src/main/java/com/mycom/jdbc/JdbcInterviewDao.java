@@ -91,6 +91,21 @@ public class JdbcInterviewDao implements InterviewDao {
     }
 
     @Override
+    public List<Interview> sortByInterviewName() {
+        return getList(SQL_SORT_BY_INTERVIEW_NAME);
+    }
+
+    @Override
+    public List<Interview> sortByVacancy() {
+        return getList(SQL_SORT_BY_VACANCY);
+    }
+
+    @Override
+    public List<Interview> sortByCandidate() {
+        return getList(SQL_SORT_BY_CANDIDATE);
+    }
+
+    @Override
     public List<Interview> findByCandidate(long candidateId) {
         List<Interview> list = new ArrayList<Interview>();
         Connection connection = null;

@@ -115,6 +115,16 @@ public class JdbcCandidateDao implements CandidateDao {
     }
 
     @Override
+    public List<Candidate> sortSurNameCandidate() {
+        return getList(SQL_SORT_SURNAME);
+    }
+
+    @Override
+    public List<Candidate> sortBirthdayCandidate() {
+        return getList(SQL_SORT_BIRTHDAY);
+    }
+
+    @Override
     public void insert(Candidate candidate) {
         Connection connection = null;
         try {

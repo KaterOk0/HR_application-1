@@ -248,6 +248,11 @@ public class JdbcVacancyDao implements VacancyDao {
     }
 
     @Override
+    public List<Vacancy> sortForPosition() {
+        return getList(SQL_SORT_FOR_POSITION);
+    }
+
+    @Override
     public List<Vacancy> sortForExperience() {
         return getList(SQL_SORT_FOR_EXPERIENCE);
     }

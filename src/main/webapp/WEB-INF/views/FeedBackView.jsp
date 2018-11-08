@@ -3,48 +3,67 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<html>
-<style>
-	<%@include file="../styles/home_style.css"%>
-</style>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<header><a href="back">HR Application</a></header>
-<div class="main-block">
 
-	<h1 align="center">Show feedback table</h1>
-	<p align="center"><a href="FeedbackCreate" class="create-button"><spring:message code="feedback.create"/></a></p>
-<div class="filter-sort">
-	<spring:message code="filter"/>:
-<a href="ViewFeedbackForm" class="filter-sort-item"><spring:message code="find"/></a>
-<a href="FeedBackFilter?type=failure" class="filter-sort-item">failure</a>
-<a href="FeedBackFilter?type=success" class="filter-sort-item">success</a>
-<a href="FeedBackFilter?type=awaiting" class="filter-sort-item">awaiting</a>
-</div>
-	<table border="1">
-		<tr>
-			<th><spring:message code="feedback.reason"/></th>
-			<th><spring:message code="feedback.feedback"/></th>
-			<th><spring:message code="feedback.interviewer"/></th>
-			<th><spring:message code="feedback.interview"/></th>
-			<th><spring:message code="feedback.edit"/></th>
-			<th><spring:message code="feedback.delete"/></th>
-		</tr>
-		<c:forEach var="feedback" items="${list}">
-			<tr>
-				<td><c:out value="${feedback.reason}"></c:out></td>
-				<td><c:out value="${feedback.feedbackState}"/></td>
-				<td><c:out value="${feedback.interviewerName}"/></td>
-				<td><c:out value="${feedback.interviewName}"/></td>
-				<td><a href="FeedBackEdit?id=${feedback.id}"><spring:message code="edit"/></a></td>
-			    <td><a href="FeedBackDelete?id=${feedback.id}"><spring:message code="delete"/></a></td>
-			</tr>
-		</c:forEach>
-	</table>
-</div>
-<footer> by Team-3</footer>
-</body>
+<html>
+	<style>
+		<%@include file="../styles/home_style.css"%>
+	</style>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>HR_app</title>
+	</head>
+
+	<body>
+		<header><a href="/" class="logo">HR Application</a>
+			<select class="selectLanguage" onchange="location = this.value;">
+				<option><spring:message code="select.language"/></option>
+				<option value="${pageContext.request.contextPath}?lang=ru">Ru</option>
+				<option value="${pageContext.request.contextPath}?lang=en">En</option>
+			</select>
+		</header>
+
+		<div class="main-block">
+
+		<h1 align="center">Show feedback table</h1>
+		<p align="center"><a href="FeedbackCreate" class="create-button"><spring:message code="feedback.create"/></a></p>
+			<div class="filter-sort">
+				<spring:message code="filter"/>:
+				<a href="ViewFeedbackForm" class="filter-sort-item"><spring:message code="find"/></a>
+				<a href="FeedBackFilter?type=failure" class="filter-sort-item">failure</a>
+				<a href="FeedBackFilter?type=success" class="filter-sort-item">success</a>
+				<a href="FeedBackFilter?type=awaiting" class="filter-sort-item">awaiting</a>
+			</div>
+
+			<table border="1">
+				<tr>
+					<th><spring:message code="feedback.reason"/>
+						<a href="SortReason" class="filter-sort-item">↓</a>
+					</th>
+					<th><spring:message code="feedback.feedback"/></th>
+					<th>
+						<spring:message code="feedback.interviewer"/>
+						<a href="SortInterviewer" class="filter-sort-item">↓</a>
+					</th>
+					<th>
+						<spring:message code="feedback.interview"/>
+						<a href="SortInterview" class="filter-sort-item">↓</a>
+					</th>
+					<th><spring:message code="feedback.edit"/></th>
+					<th><spring:message code="feedback.delete"/></th>
+				</tr>
+				<c:forEach var="feedback" items="${list}">
+					<tr>
+						<td><c:out value="${feedback.reason}"></c:out></td>
+						<td><c:out value="${feedback.feedbackState}"/></td>
+						<td><c:out value="${feedback.interviewerName}"/></td>
+						<td><c:out value="${feedback.interviewName}"/></td>
+						<td><a href="FeedBackEdit?id=${feedback.id}"><spring:message code="edit"/></a></td>
+						<td><a href="FeedBackDelete?id=${feedback.id}"><spring:message code="delete"/></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+	</div>
+	<footer> by Team-3</footer>
+	</body>
 </html>

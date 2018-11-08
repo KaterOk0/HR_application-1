@@ -12,26 +12,42 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header><a href="back">HR Application</a></header>
+<header><a href="/" class="logo">HR Application</a>
+	<select class="selectLanguage" onchange="location = this.value;">
+		<option><spring:message code="select.language"/></option>
+		<option value="${pageContext.request.contextPath}?lang=ru">Ru</option>
+		<option value="${pageContext.request.contextPath}?lang=en">En</option>
+	</select>
+</header>
 <div class="main-block">
 	<h1 align="center"><spring:message code="candidate.candidate"/></h1>
 
 <p align="center"><a href="CandidateCreate" class="create-button"><spring:message code="candidate.create"/></a></p>
-<div class="filter-sort">
+
+	<div class="filter-sort">
+
 	<spring:message code="filter"/>:
 <a href="ViewCandidateForm" class="filter-sort-item"><spring:message code="find"/></a>
 <a href="CandidateFilter?type=active" class="filter-sort-item">active</a>
 <a href="CandidateFilter?type=passive" class="filter-sort-item">passive</a>
-Sort by: <a href="CandidateSortSalary" class="filter-sort-item">salary</a>
-<a href="CandidateSortName" class="filter-sort-item"><spring:message code="candidate.name"/></a>
-</div>
+	</div>
 
 	<table border="1">
 		<tr>
-			<th><spring:message code="candidate.name"/></th>
-			<th><spring:message code="candidate.surname"/></th>
-			<th><spring:message code="candidate.birthday"/></th>
-			<th><spring:message code="candidate.salary"/></th>
+			<th>
+				<spring:message code="candidate.name"/>
+				<a href="CandidateSortName" class="filter-sort-item">↓</a>
+			</th>
+			<th>
+				<spring:message code="candidate.surname"/>
+				<a href="CandidateSortSurName" class="filter-sort-item">↓</a>
+			</th>
+			<th><spring:message code="candidate.birthday"/>
+				<a href="CandidateSortBirthday" class="filter-sort-item">↓</a>
+			</th>
+			<th><spring:message code="candidate.salary"/>
+				Sort by: <a href="CandidateSortSalary" class="filter-sort-item">↓</a>
+			</th>
 			<th><spring:message code="candidate.state"/></th>
 			<th><spring:message code="candidate.skills"/></th>
 			<th><spring:message code="candidate.edit"/></th>
