@@ -9,51 +9,95 @@
 </style>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
 </head>
 
 <body>
-<%--<header><a href="<%="WEB-INF/views/home.jsp"%>">HR Application</a></header>--%>
-<header><a href="back">HR Application</a></header>
-<div class="main-block">
+<header><a href="/" class="logo">HR Application</a>
+	<select class="selectLanguage" onchange="location = this.value;">
+		<option><spring:message code="select.language"/></option>
+		<option value="${pageContext.request.contextPath}?lang=ru">Ru</option>
+		<option value="${pageContext.request.contextPath}?lang=en">En</option>
+	</select>
+</header>
+	<div class="main-block">
 
-<h1 align="center"><spring:message code="user.user"/></h1>
-<p align="center"><a href="UserCreate" class="create-button"><spring:message code="user.add"/></a></p>
+	<h1 align="center"><spring:message code="user.user"/></h1>
+	<p align="center">
+		<a href="UserCreate" class="create-button"><spring:message code="user.add"/></a>
+	</p>
 
-<div class="filter-sort">
-	<spring:message code="filter"/>:
-<a href="ViewUserForm" class="filter-sort-item"><spring:message code="find"/></a>
-<a href="UserFilter?type=manager" class="filter-sort-item">manager</a>
-<a href="UserFilter?type=developer" class="filter-sort-item">developer</a>
-	<spring:message code="sort"/>: <a href="UserSortName" class="filter-sort-item">name</a>
-</div>
+	<div class="filter-sort">
+		<spring:message code="filter"/>:
+		<a href="ViewUserForm" class="filter-sort-item"><spring:message code="find"/></a>
+		<a href="UserFilter?type=manager" class="filter-sort-item">manager</a>
+		<a href="UserFilter?type=developer" class="filter-sort-item">developer</a>
 
-<table border="1">
-	<tr>
-		<th><spring:message code="user.name"/></th>
-		<th><spring:message code="user.surname"/></th>
-		<th>Email</th>
-		<th><spring:message code="user.password"/></th>
-		<th><spring:message code="user.role"/></th>
-		<th><spring:message code="user.edit"/></th>
-		<th><spring:message code="user.delete"/></th>
-	</tr>
-	<c:forEach var="user" items="${list}">
+	</div>
+
+	<table border="1">
 		<tr>
-			<td><c:out value="${user.name}"></c:out></td>
-			<td><c:out value="${user.surname}"/></td>
-			<td><c:out value="${user.email}"/></td>
-			<td><c:out value="${user.password}"/></td>
-			<td><c:out value="${user.role}"></c:out></td>
-			<td><a href="UserEdit?id=${user.id}"><spring:message code="edit"/></a></td>
-			<td><a href="UserDelete?id=${user.id}"><spring:message code="delete"/></a></td>
-		</tr>
-	</c:forEach>
-</table>
+			<th>
+				<span><spring:message code="user.name"/></span>
+				<a href="UserSortName" class="filter-sort-item">↓</a>
+				<a href="UserSortNameReverse" class="filter-sort-item">↑</a>
+			</th>
 
-</div>
-<footer> by Team-3</footer>
+			<th>
+				<spring:message code="user.surname"/>
+				<a href="UserSortSurName" class="filter-sort-item">↓</a>
+			</th>
+			<th>
+				Email
+				<a href="UserSortName" class="filter-sort-item">↓</a>
+			</th>
+
+			<th>
+				<spring:message code="user.password"/>
+			</th>
+			<th>
+				<spring:message code="user.role"/>
+			</th>
+			<th>
+				<spring:message code="user.edit"/>
+			</th>
+			<th>
+				<spring:message code="user.delete"/>
+			</th>
+
+		</tr>
+
+		<c:forEach var="user" items="${list}">
+			<tr>
+				<td>
+					<c:out value="${user.name}"></c:out>
+				</td>
+				<td>
+					<c:out value="${user.surname}"/>
+				</td>
+				<td>
+					<c:out value="${user.email}"/>
+				</td>
+				<td>
+					<c:out value="${user.password}"/>
+				</td>
+				<td>
+					<c:out value="${user.role}"></c:out>
+				</td>
+				<td>
+					<a href="UserEdit?id=${user.id}"><spring:message code="edit"/></a>
+				</td>
+				<td>
+					<a href="UserDelete?id=${user.id}"><spring:message code="delete"/></a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+
+	</div>
+	<footer> by Team-3</footer>
 </body>
 
 </html>

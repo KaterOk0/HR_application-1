@@ -115,6 +115,30 @@ public class JdbcUserDao implements UserDao {
         return list;
     }
 
+    @Override
+    public List<User> findAllSortNameReverse() {
+        List<User> list = new ArrayList<User>();
+        Connection connection = null;
+        statementToFind(list, connection, SQL_SORT_BY_NAME_REVERSE);
+        return list;
+    }
+
+    @Override
+    public List<User> findAllSortSurName() {
+        List<User> list = new ArrayList<User>();
+        Connection connection = null;
+        statementToFind(list, connection, SQL_SORT_BY_SURNAME);
+        return list;
+    }
+
+    @Override
+    public List<User> findAllSortEmail() {
+        List<User> list = new ArrayList<User>();
+        Connection connection = null;
+        statementToFind(list, connection, SQL_SORT_BY_EMAIL);
+        return list;
+    }
+
     private void statementToFind(List<User> list, Connection connection, String sqlSortByName) {
         try {
             connection = dataSource.getConnection();

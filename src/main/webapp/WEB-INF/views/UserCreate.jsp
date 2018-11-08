@@ -13,7 +13,14 @@
 
 <body>
 
-<header><a href="back">HR Application</a></header>
+<header><a href="/" class="logo">HR Application</a>
+    <select class="selectLanguage" onchange="location = this.value;">
+        <option><spring:message code="select.language"/></option>
+        <option value="${pageContext.request.contextPath}?lang=ru">Ru</option>
+        <option value="${pageContext.request.contextPath}?lang=en">En</option>
+    </select>
+</header>
+
 <div class="main-block">
 <h1 align="center"><spring:message code="user.create"/></h1>
         <form:form action="SaveUser" method="post" modelAttribute="user">

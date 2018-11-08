@@ -12,6 +12,12 @@ public interface CandidateDao {
             " where " + Candidate.CANDIDATE_STATE_COLUMN + "=?";
     String SQL_SORT_NAME = SqlDao.SQL_FIND_ALL + Candidate.TABLE_NAME +
             " order by " + Candidate.NAME_COLUMN;
+
+    String SQL_SORT_SURNAME = SqlDao.SQL_FIND_ALL + Candidate.TABLE_NAME +
+            " order by " + Candidate.SURNAME_COLUMN;
+    String SQL_SORT_BIRTHDAY = SqlDao.SQL_FIND_ALL + Candidate.TABLE_NAME +
+            " order by " + Candidate.BIRTHDAY_COLUMN;
+
     String SQL_FIND_BY_ID = SqlDao.SQL_FIND_ALL + Candidate.TABLE_NAME +
             " where " + Candidate.ID_COLUMN + "=?";
     String SQL_INSERT_CANDIDATE = SqlDao.SQL_INSERT + Candidate.TABLE_NAME +
@@ -35,6 +41,9 @@ public interface CandidateDao {
     Candidate findById(long id);
 
     List<Candidate> sortNameCandidate();
+    List<Candidate> sortSurNameCandidate();
+
+    List<Candidate> sortBirthdayCandidate();
 
     void insert(Candidate candidate);
 

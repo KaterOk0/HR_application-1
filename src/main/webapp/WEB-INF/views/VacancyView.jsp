@@ -12,7 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header><a href="back">HR Application</a></header>
+<header><a href="/" class="logo">HR Application</a>
+	<select class="selectLanguage" onchange="location = this.value;">
+		<option><spring:message code="select.language"/></option>
+		<option value="${pageContext.request.contextPath}?lang=ru">Ru</option>
+		<option value="${pageContext.request.contextPath}?lang=en">En</option>
+	</select>
+</header>
 <div class="main-block">
 <h1 align="center"><spring:message code="show.vacancy"/></h1>
 
@@ -22,9 +28,7 @@
 	<spring:message code="filter"/>:
 	<a href="ViewVacancyForm" class="filter-sort-item"><spring:message code="find"/></a>
 	<spring:message code="sort"/>:
-    <a href="SortSalaryFrom" class="filter-sort-item">SalaryFrom</a>
-	<a href="SortSalaryTo" class="filter-sort-item">SalaryTo</a>
-	<a href="SortExperience" class="filter-sort-item">Experience</a>
+
 </div>
 
     <!--  <p>Filter by | who create
@@ -36,9 +40,13 @@
 <table border="1">
 	<tr>
 		<th><spring:message code="vacancy.position"/></th>
-		<th><spring:message code="vacancy.salaryFrom"/></th>
-		<th><spring:message code="vacancy.salaryTo"/></th>
-		<th><spring:message code="vacancy.skills"/></th>
+		<th><spring:message code="vacancy.salaryFrom"/>
+			<a href="SortSalaryFrom" class="filter-sort-item">↓</a></th>
+		<th><spring:message code="vacancy.salaryTo"/>
+			<a href="SortSalaryTo" class="filter-sort-item">↓</a></th>
+		<th><spring:message code="vacancy.experience"/>
+			<a href="SortExperience" class="filter-sort-item">↓</a>
+		</th>
 		<th><spring:message code="vacancy.developer"/></th>
 		<th><spring:message code="vacancy.skills"/></th>
 		<th><spring:message code="vacancy.edit"/></th>

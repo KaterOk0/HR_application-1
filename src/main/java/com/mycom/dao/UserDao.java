@@ -8,6 +8,14 @@ public interface UserDao {
     String SQL_FIND_ALL_USERS = SqlDao.SQL_FIND_ALL + User.TABLE_NAME;
     String SQL_SORT_BY_NAME = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
             " order by " + User.NAME_COLUMN;
+    String SQL_SORT_BY_NAME_REVERSE = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
+            " order by " + User.NAME_COLUMN;
+
+    String SQL_SORT_BY_SURNAME = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
+            " order by " + User.SURNAME_COLUMN;
+    String SQL_SORT_BY_EMAIL = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
+            " order by " + User.EMAIL_COLUMN;
+
     String SQL_FIND_BY_NAME = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
             " where " + User.NAME_COLUMN + "=?";
     String SQL_FIND_BY_ROLE = SqlDao.SQL_FIND_ALL + User.TABLE_NAME +
@@ -27,6 +35,11 @@ public interface UserDao {
     List<User> findAll();
 
     List<User> findAllSortName();
+    List<User> findAllSortNameReverse();
+
+    List<User> findAllSortSurName();
+
+    List<User> findAllSortEmail();
 
     List<User> findByName(String name);
 
